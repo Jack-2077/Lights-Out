@@ -53,10 +53,10 @@ class Board extends Component {
   createBoard() {
     let board = [];
     // TODO: create array-of-arrays of true/false values
-    for (let x = 0; x < this.props.nrows; x++)
+    for (let y = 0; y < this.props.nrows; y++)
     {
       let row = []
-      for (let y = 0; y < this.props.ncols; y++)
+      for (let x = 0; x < this.props.ncols; x++)
       {
         row.push(Math.random() < this.props.chanceLightStartsOn)
       }
@@ -83,10 +83,19 @@ class Board extends Component {
 
     // TODO: flip this cell and the cells around it
 
+    flipCell(y, x) //flip initial cell
+    flipCell(y, x - 1) //flip left
+    flipCell(y, x + 1) //flip right
+    flipCell(y - 1, x) //flip below
+    flipCell(y + 1, x) //flip above
+
+    
+
     // win when every cell is turned off
     // TODO: determine is the game has been won
+    let hasWon = false
 
-    //this.setState({board, hasWon});
+    this.setState({board: board, hasWon: hasWon});
   }
 
 
@@ -99,15 +108,15 @@ class Board extends Component {
     // TODO
     let tblBoard = []
 
-    for (let x = 0; x < this.props.nrows; x++)
+    for (let y = 0; y < this.props.nrows; y++)
     {
       let row = []
-      for (let y = 0; y < this.props.ncols; y++)
+      for (let x = 0; x < this.props.ncols; x++)
       {
-        let coord = `${x}-${y}`
-        row.push(<Cell key={coord} isLit={this.state.board[x][y]} flipCellsAroundMe={() => this.flipCellsAround(coord)}/>)
+        let coord = `${y}-${x}`
+        row.push(<Cell key={coord} isLit={this.state.board[y][x]} flipCellsAroundMe={() => this.flipCellsAround(coord)}/>)
       }
-      tblBoard.push(<tr key={x}>{row}</tr>)
+      tblBoard.push(<tr key={y}>{row}</tr>)
     } 
     
 
