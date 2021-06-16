@@ -11,9 +11,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #003;
-  padding-top: 50px;
+  background-color: #212121;
   color: white;
   text-align: center;
+  overflow: hidden;
 }
 
