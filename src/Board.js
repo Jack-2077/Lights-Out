@@ -42,7 +42,7 @@ class Board extends Component {
 
     this.state = {
       hasWon: false,
-      Board: this.createBoard()
+      board: this.createBoard()
     }
 
     // TODO: set initial state
@@ -59,7 +59,8 @@ class Board extends Component {
       for (let y = 0; y < this.props.ncols; y++)
       {
         row.push(Math.random() < this.props.chanceLightStartsOn)
-        }
+      }
+       board.push(row)
       }
     return board
   }
@@ -96,6 +97,19 @@ class Board extends Component {
     // if the game is won, just show a winning msg & render nothing else
 
     // TODO
+    let tblBoard = []
+
+    for (let x = 0; x < this.props.nrows; x++)
+    {
+      let row = []
+      for (let y = 0; y < this.props.ncols; y++)
+      {
+        let coord = `${x}-${y}`
+        row.push(<Cell key={coord} isLit={this.state.board[x][y]} flipCellsAroundMe={() => this.flipCellsAround(coord)}/>)
+      }
+      tblBoard.push(<tr key={x}>{row}</tr>)
+    } 
+    
 
     // make table board
     return (
