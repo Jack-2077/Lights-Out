@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Board />
+      <h1>Hi test</h1>
       </div>
     );
   }
